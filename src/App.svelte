@@ -1,6 +1,14 @@
 <script>
 	import Vlajky from "./vlajky.svelte";
 	  import Kviz from "./kviz.svelte";
+	  import Priklady from "./priklady.svelte";
+	  import Barvy from "./barvy.svelte";
+	  import Obrazky from "./obrazky.svelte";
+	  
+  
+	  import Slova from "./slova.svelte";
+	  import Uhel from "./uhel.svelte";
+	  import Finance from "./finance.svelte";
   
 	let selectedComponent = null;
 	let darkMode = false;
@@ -46,9 +54,12 @@
 	  <div class="buttons">
 		<button on:click={() => handleClick('Vlajky')}>Vlajky</button>
 		<button on:click={() => handleClick('Kvíz')}>Kvíz</button>
-		<button on:click={() => handleClick('Matematika')}>Matematika</button>
-		<button on:click={() => handleClick('Čeština')}>Čeština</button>
-		<button on:click={() => handleClick('Fyzika')}>Fyzika</button>
+		<button on:click={() => handleClick('Příklady')}>Příklady</button>
+		<button on:click={() => handleClick('Barvy')}>Barvy</button>
+		<button on:click={() => handleClick('Obrázky')}>Obrázky</button>
+			  <button on:click={() => handleClick('Slova')}>Slova</button>
+			  <button on:click={() => handleClick('Úhel')}>Úhel</button>
+			  <button on:click={() => handleClick('Finance')}>Finance</button>
 	  </div>
 	{/if}
   
@@ -59,6 +70,31 @@
   
 	  {#if selectedComponent === 'Kvíz'}
 	  <Kviz />
+	{/if}
+  
+	  {#if selectedComponent === 'Příklady'}
+	  <Priklady />
+	{/if}
+  
+	  {#if selectedComponent === 'Barvy'}
+	  <Barvy />
+	{/if}
+  
+	  {#if selectedComponent === 'Obrázky'}
+	  <Obrazky />
+	{/if}
+  
+  
+	  {#if selectedComponent === 'Slova'}
+	  <Slova />
+	{/if}
+  
+	  {#if selectedComponent === 'Úhel'}
+	  <Uhel />
+	{/if}
+  
+	  {#if selectedComponent === 'Finance'}
+	  <Finance />
 	{/if}
   
 	  

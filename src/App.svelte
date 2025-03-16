@@ -1,14 +1,10 @@
 <script>
-	import Vlajky from "./vlajky.svelte";
-	  import Kviz from "./kviz.svelte";
+	import Vlajky from "./vlajky.svelte"; //vytvořit kopii
+	  import Kviz from "./kviz.svelte"; 
 	  import Priklady from "./priklady.svelte";
-	  import Barvy from "./barvy.svelte";
-	  import Obrazky from "./obrazky.svelte";
-	  
-  
-	  import Slova from "./slova.svelte";
+	  import Obrazky from "./obrazky.svelte"; //vytvořit kopii
 	  import Uhel from "./uhel.svelte";
-	  import Finance from "./finance.svelte";
+	  import Finance from "./finance.svelte"; 
   
 	let selectedComponent = null;
 	let darkMode = false;
@@ -16,11 +12,12 @@
 	function handleClick(component) {
 	  selectedComponent = component;
 	}
-  
 	function goBack() {
 	  selectedComponent = null;
 	}
   </script>
+  
+  
   
   <button on:click={() => darkMode = !darkMode}>
 	{darkMode ? "Světlý" : "Tmavý"} režim
@@ -33,72 +30,42 @@
   {/if}
   
   <main class="container">
-	<!-- Hlavní nadpis se mění podle obsahu -->
-	<h1>
-	  {#if selectedComponent === 'Vlajky'}
-		Vlajky
-	  {:else if selectedComponent}
-		{selectedComponent}
-	  {:else}
-		Interaktivní výuková aplikace
-	  {/if}
-	</h1>
-  
-	<!-- Zobrazení tlačítka zpět, pokud je vybraná komponenta -->
 	{#if selectedComponent}
 	  <button class="back-button" on:click={goBack}>Zpátky</button>
 	{/if}
   
 	{#if !selectedComponent} 
-	  <!-- Menu tlačítek -->
+		  <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" alt="logo frameworku Svelte"/>
+		  <h1>Interaktivní výuková aplikace</h1>
+		  <p>Tato aplikace je vytvořena pomocí frameworku Svelte, obsahuje 6 vzorových příkladů, kde každý z nich demonstruje schopnosti frameworku ve vztahu k vytváření interaktivních výukových aplikací</p><br>
 	  <div class="buttons">
 		<button on:click={() => handleClick('Vlajky')}>Vlajky</button>
-		<button on:click={() => handleClick('Kvíz')}>Kvíz</button>
-		<button on:click={() => handleClick('Příklady')}>Příklady</button>
-		<button on:click={() => handleClick('Barvy')}>Barvy</button>
-		<button on:click={() => handleClick('Obrázky')}>Obrázky</button>
-			  <button on:click={() => handleClick('Slova')}>Slova</button>
-			  <button on:click={() => handleClick('Úhel')}>Úhel</button>
+		<button on:click={() => handleClick('Kviz')}>Kvíz</button>
+		<button on:click={() => handleClick('Priklady')}>Příklady</button>
+		<button on:click={() => handleClick('Obrazky')}>Obrázky</button>
+			  <button on:click={() => handleClick('Uhel')}>Úhel</button>
 			  <button on:click={() => handleClick('Finance')}>Finance</button>
 	  </div>
 	{/if}
   
-	<!-- Dynamické načítání komponenty -->
+	<!-- Podmínka pro volání komponent -->
 	{#if selectedComponent === 'Vlajky'}
 	  <Vlajky />
+	  {:else if selectedComponent === 'Kviz'}
+		  <Kviz />
+	  {:else if selectedComponent === 'Priklady'}
+		  <Priklady />
+	  {:else if selectedComponent === 'Obrazky'}
+		  <Obrazky />
+	  {:else if selectedComponent === 'Uhel'}
+		  <Uhel />
+	  {:else if selectedComponent === 'Finance'}
+		  <Finance />
 	{/if}
-  
-	  {#if selectedComponent === 'Kvíz'}
-	  <Kviz />
-	{/if}
-  
-	  {#if selectedComponent === 'Příklady'}
-	  <Priklady />
-	{/if}
-  
-	  {#if selectedComponent === 'Barvy'}
-	  <Barvy />
-	{/if}
-  
-	  {#if selectedComponent === 'Obrázky'}
-	  <Obrazky />
-	{/if}
-  
-  
-	  {#if selectedComponent === 'Slova'}
-	  <Slova />
-	{/if}
-  
-	  {#if selectedComponent === 'Úhel'}
-	  <Uhel />
-	{/if}
-  
-	  {#if selectedComponent === 'Finance'}
-	  <Finance />
-	{/if}
-  
-	  
   </main>
+  
+  
+  
   
   <style>
 	.container {
@@ -109,18 +76,18 @@
 	  padding: 20px;
 	}
   
-	h1 {
-	  color: #2c3e50;
-	}
-  
 	.buttons {
 	  display: flex;
 	  flex-direction: column;
 	  gap: 10px;
 	}
   
+	  .logo  {
+	  width: 13%;
+	}
+  
 	button {
-	  background-color: #3498db;
+	  background-color: darkorange;
 	  color: white;
 	  border: none;
 	  padding: 10px 15px;
@@ -131,7 +98,7 @@
 	}
   
 	button:hover {
-	  background-color: #2980b9;
+	  background-color: orangered;
 	}
   
 	/* Styl pro tlačítko zpět */

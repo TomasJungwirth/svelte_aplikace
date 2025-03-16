@@ -13,18 +13,8 @@
       correct: 2 
     },
     { 
-      question: "Která planeta nepatří mezi tzv. plynné obry?", 
-      options: ["Uran", "Merkur", "Saturn", "Jupiter"], 
-      correct: 1 
-    },
-    { 
       question: "Jak se jmenuje naše galaxie?", 
       options: ["Mléčná dráha", "Andromeda", "Orion", "Velká mlhovina"], 
-      correct: 0 
-    },
-    { 
-      question: "Která planeta je pojmenována po Římském bohu války?", 
-      options: ["Mars", "Neptun", "Merkur", "Saturn"], 
       correct: 0 
     },
     { 
@@ -32,26 +22,11 @@
       options: ["7", "8", "9", "10"], 
       correct: 1 
     },
-		 { 
-      question: "Kterou z těchto planet nazýváme trpasličí planetou?", 
-      options: ["Venuše", "Mars", "Merkur", "Pluto"], 
-      correct: 3 
-    },
 		{ 
       question: "Která planeta je známá díky svým prstencům?", 
       options: ["Venuše", "Saturn", "Uran", "Neptun"], 
       correct: 1 
     },
-		{ 
-      question: "Slunce je?", 
-      options: ["Planeta", "Mlhovina", "Hvězda", "Kometa"], 
-      correct: 2 
-    },
-    { 
-      question: "Co je nejjasnější objekt na noční obloze (kromě Měsíce)?", 
-      options: ["Polárka", "Venuše", "Mars", "Betelgeuze"], 
-      correct: 1 
-    }
   ];
 
   let currentQuestion = 0;
@@ -63,7 +38,7 @@
 
   function startTimer() {
     clearInterval(timer);
-    timeLeft = 20;
+    timeLeft = 15;
     timer = setInterval(() => {
       if (timeLeft > 0) {
         timeLeft--;
@@ -109,8 +84,14 @@
   startTimer();
 </script>
 
+
+<h1>Příklad kvíz</h1>
+<p>Tento kvíz je zaměřen na Sluneční soustavu, je zde 5 otázek, kde je vždy pouze jedna z odpovědí správně. Pokud se odpoví správně tak odpověď zezelená, pokud se odpoví špatně odpověď zčervená a zároveň se zobrazí správná odpověď zeleně. Je zde zobrazeno aktuální skóre počtu bodů které se aktualizuje podle odpovědí na otázky. Zároveň je zde nastaven čas na odpověď a to 15 sekund pokud se neodpoví na otázku včas tak se otázka přeskočí a kvíz pokračuje. Ke konci kvízu se zobrazí celkové skóre spolu s tlačítkem hrát znovu.</p>
+<hr>
+
 <main>
   {#if currentQuestion < questions.length}
+		<h1>Kvíz</h1>
     <div transition:fade>
       <h2>{questions[currentQuestion].question}</h2>
 	          <p>Aktuální skóre: {score} / {questions.length}</p>
@@ -130,11 +111,14 @@
     </div>
   {:else}
     <div transition:fade>
-      <h2>Hotovo! Tvoje skóre: {score} / {questions.length}</h2>
+			<h1>Výsledek:</h1>
+      <h2>Tvoje skóre: {score} z {questions.length} bodů</h2>
       <button on:click={restartQuiz}>Hrát znovu</button>
     </div>
   {/if}
 </main>
+
+
 
 <style>
   main {

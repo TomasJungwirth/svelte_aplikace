@@ -99,8 +99,12 @@
   }
 </script>
 
+
+<h1>Příklad vlajky</h1>
+<p>V tomto příkladu se podle vybraného kontinentu zobrazí obrázek kontinentu spolu s vlajkami států, které se na vybraném kontinentu nachází. Po kliknutí na určitou vlajku se zobrazí informace o daném státu. Informace a obrázky byly převzaty z Wikipedie.</p>
+
 <main>
-  <h1>Vyber kontinent</h1>
+  <h2>Vyber kontinent</h2>
   <select bind:value={selectedContinent} on:change={loadFlags}>
     <option value="">-- Vyber kontinent --</option>
     {#each Object.keys(continents) as continent}
